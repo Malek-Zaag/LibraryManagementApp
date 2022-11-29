@@ -14,5 +14,5 @@ Users registered for this application can :
 Admin of this application can :
 
 - List/manage books
-- Track rented books and thier availability
+- Track rented books and their availability
 - Send notifications via email to users once lease expires

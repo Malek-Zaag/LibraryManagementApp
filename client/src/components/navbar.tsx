@@ -1,20 +1,27 @@
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.jpg";
 export const Navbar = () => {
   return (
     <div
-      className="d-flex justify-content-between bg-dark flex-row p-3 fw-semibold"
+      className="align-items-center bg-light d-flex justify-content-between fs-4 flex-row fw-semibold"
       style={{}}
     >
-      <div className="text-primary d-flex">
+      <div className="text-primary d-flex align-items-center">
         <Link to="/">
-          <img alt="logo" />
+          <img src={logo} alt="logo" height="80" width="80" />
         </Link>
-        <Link to="/library" className="mx-3">
+        <Link to="/library" className="mx-3" style={{ textDecoration: "none" }}>
           Library
         </Link>
-        <div className="mx-3">About Us</div>
+        <Link to="/" className="mx-3" style={{ textDecoration: "none" }}>
+          About Us
+        </Link>
       </div>
-      <div className="text-secondary">Second Element</div>
+      <div className="text-secondary p-2">
+        <Link to="/signup" style={{ textDecoration: "none" }}>
+          Signup/Login
+        </Link>
+      </div>
     </div>
   );
 };
