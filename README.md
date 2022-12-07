@@ -16,3 +16,6 @@ Admin of this application can :
 - List/manage books
 - Track rented books and their availability
 - Send notifications via email to users once lease expires
+
+
+[!image](https://github.com/Malek-Zaag/LibraryManagementApp/blob/main/library_app.drawio.png)
