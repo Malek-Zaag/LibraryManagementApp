@@ -1,23 +1,23 @@
-const { Book } = require("./model");
+const { where } = require("sequelize");
+const { Book, User } = require("./model");
 
 module.exports.simpleGetRequest = (req, res) => {
   console.log("get request");
   res.send("backend is working");
 };
 
-module.exports.dbCall = (req, res) => {
+module.exports.dbCall = async (req, res) => {
   console.log(req);
   res.send("db connectd");
-  Book.create({
-    title: "Clean Code",
-    author: "Robert Cecil Martin",
-    release_date: "2021-12-14",
-    subject: 3,
-  })
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((error) => {
-      console.error("Failed to create a new record : ", error);
-    });
+  const book = await Book.findAll();
+  console.log(JSON.stringify(book));
+
+  User.update(
+    { BookId: book[0].id },
+    {
+      where: {
+        email: "test@gmail",
+      },
+    }
+  );
 };
