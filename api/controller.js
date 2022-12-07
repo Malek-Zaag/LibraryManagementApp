@@ -1,17 +1,57 @@
 const { where } = require("sequelize");
 const { Book, User } = require("./model");
 const bcrypt = require("bcrypt");
+const { default: axios } = require("axios");
 const saltRounds = 10;
 const salt = bcrypt.genSaltSync(saltRounds);
+var fs = require("fs");
+api_key = "AIzaSyBV8-FTTR2lMCW5o38ncmEIQ-HCelWc6PI";
+const books = [];
+var newBooks = [];
 
-module.exports.simpleGetRequest = (req, res) => {
+module.exports.simpleGetRequest = async (req, res) => {
   console.log("backend route");
-  res.send("backend route");
+  const response = await axios.get(
+    `https://www.googleapis.com/books/v1/volumes?q=subject:fiction&key=${api_key}`
+  );
+  const data = response.data;
+  data.items.map((item) => {
+    books.push(item.volumeInfo);
+  });
+  books.map((book) => {
+    newBooks.push({
+      title: book.title,
+      publisher: book.publisher,
+      description: book.description,
+      category: book.categories,
+    });
+  });
+  fs.writeFile("books.json", JSON.stringify(newBooks), function (err) {
+    if (err) {
+      console.log(err);
+    }
+  });
+  try {
+    const db_books = await Book.bulkCreate(
+      newBooks.map((book) => {
+        return {
+          name: book.title,
+          author: book.publisher,
+          category: book.category,
+          review: 0,
+        };
+      })
+    );
+  } catch (error) {
+    console.log(error);
+  }
+  res.send("scraping done");
 };
 
 module.exports.dbCall = async (req, res) => {
   console.log("db route");
-  res.send("db route");
+  //res.send(newBooks);
+  res.send("testing db done");
 };
 
 module.exports.signUp = async (req, res) => {
@@ -45,8 +85,18 @@ module.exports.login = async (req, res) => {
     console.log(error);
   }
   if (response) {
-    res.send(response);
+    res.status(200).send(response);
   } else {
     res.status(404).send("error occurred while fetching data");
+  }
+};
+
+module.exports.getAllUsers = async (req, res) => {
+  try {
+    const users = await User.findAll();
+    res.send(users);
+  } catch (error) {
+    console.log(error);
+    res.status(404).send(error.message);
   }
 };
