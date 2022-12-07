@@ -100,3 +100,32 @@ module.exports.getAllUsers = async (req, res) => {
     res.status(404).send(error.message);
   }
 };
+
+module.exports.getAllBooks = async (req, res) => {
+  try {
+    const books = await Book.findAll();
+    res.send(books);
+  } catch (error) {
+    res.status(404).send("error occurred while fetching books");
+  }
+};
+
+module.exports.addReview = async (req, res) => {
+  try {
+    const book = await Book.findAll({ where: { id: req.params.bookid } });
+    var review = book.review;
+    console.log(book);
+  } catch (error) {
+    res.status(404).send("error occurred while getting book id");
+  }
+  try {
+    await Book.update(
+      { review: review + 1 },
+      { where: { id: req.params.bookid } }
+    );
+    res.send("review added successfully");
+  } catch (error) {
+    res.status(404).send("error occurred while adding review");
+    console.log(error);
+  }
+};
