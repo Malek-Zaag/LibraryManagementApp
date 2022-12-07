@@ -3,6 +3,9 @@ const controller = require("./controller");
 
 const router = Router();
 
-router.get("/", controller.simpleGetRequest);
-router.get("/db", controller.dbCall);
+router.get("/api/", controller.simpleGetRequest);
+router.get("/api/db", controller.dbCall);
+router.post("/api/user/signup", controller.signUp);
+router.post("/api/user/login", controller.login);
+
 module.exports = { router };

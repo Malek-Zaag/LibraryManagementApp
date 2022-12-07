@@ -12,6 +12,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(bp.urlencoded({ extended: true }));
+app.use(bp.json());
 
 const port = process.env.PORT;
 

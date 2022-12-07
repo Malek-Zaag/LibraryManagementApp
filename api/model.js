@@ -80,5 +80,4 @@ sequelize
 User.hasMany(Book);
 User.belongsTo(Book);
 Book.belongsTo(Availability);
-
 module.exports = { User, Admin, Book, Availability };
