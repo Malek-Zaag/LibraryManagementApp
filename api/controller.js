@@ -5,7 +5,9 @@ const { default: axios } = require("axios");
 const saltRounds = 10;
 const salt = bcrypt.genSaltSync(saltRounds);
 var fs = require("fs");
-api_key = "AIzaSyBV8-FTTR2lMCW5o38ncmEIQ-HCelWc6PI";
+
+require("dotenv").config();
+api_key = process.env.API_KEY;
 const books = [];
 var newBooks = [];
 
