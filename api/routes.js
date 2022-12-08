@@ -10,5 +10,6 @@ router.post("/api/user/login", controller.login);
 router.get("/api/user/", controller.getAllUsers);
 router.get("/api/books", controller.getAllBooks);
 router.post("/api/books/:bookid", controller.addReview);
+router.post("/api/books", controller.addBook);
 
 module.exports = { router };

@@ -1,5 +1,5 @@
 const { where } = require("sequelize");
-const { Book, User } = require("./model");
+const { Book, User, Availability } = require("./model");
 const bcrypt = require("bcrypt");
 const { default: axios } = require("axios");
 const saltRounds = 10;
@@ -127,5 +127,24 @@ module.exports.addReview = async (req, res) => {
   } catch (error) {
     res.status(404).send("error occurred while adding review");
     console.log(error);
+  }
+};
+
+module.exports.addBook = async (req, res) => {
+  try {
+    const { userid, bookid } = req.body;
+    await User.update({ BookId: bookid }, { where: { id: userid } });
+    await Book.update({ UserId: userid }, { where: { id: bookid } });
+    const availability = await Availability.create({
+      type: true,
+      leaseDate: new Date(),
+    });
+    await Book.update(
+      { AvailabilityId: availability.id },
+      { where: { id: bookid } }
+    );
+    res.send("all went well");
+  } catch (error) {
+    res.status(404).send({ error: error.message });
   }
 };
