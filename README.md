@@ -1,6 +1,6 @@
 # Bookstore Library & Stock keeping app
 
-This is an online library mamangement app where users can rent books for a specific time, like them and can also review books. This will have 2 interfaces.
+This is an online library mamangement app where users can rent books for a specific time, like them and can also review books. This will have 2 interfaces .
 
 User Inerface
 Admin Interface
