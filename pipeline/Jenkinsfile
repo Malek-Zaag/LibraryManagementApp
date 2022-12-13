@@ -1,0 +1,18 @@
+CODE_CHANGES=getGitChanges()
+pipeline{
+  agent any
+  stages{
+    stage("build image"){
+      when{
+        expression{
+          CODE_CHANGES=true
+        }
+        docker build -t image:image ./api/. 
+        echo "image built successfully"
+      }
+    }
+    stage("push image to ACR"){
+      echo "pushing to ACR stage"
+    }
+  }
+}
