@@ -7,12 +7,16 @@ pipeline{
         expression{
           CODE_CHANGES=true
         }
+      }
+      steps{
         docker build -t library-management-api ./api/. 
         echo "image built successfully"
-      }
+      }     
     }
     stage("push image to ACR"){
-      echo "pushing to ACR stage"
+      steps{
+        echo "pushing to ACR stage"
+      }
     }
   }
 }
