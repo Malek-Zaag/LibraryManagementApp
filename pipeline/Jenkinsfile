@@ -1,13 +1,7 @@
-CODE_CHANGES=getGitChanges()
 pipeline{
   agent any
   stages{
     stage("build image"){
-      when{
-        expression{
-          CODE_CHANGES=true
-        }
-      }
       steps{
         sh "docker build -t library-management-api ./api/." 
         echo "image built successfully"
