@@ -6,7 +6,7 @@ pipeline{
   stages{
     stage("build image"){
       steps{
-        sh "docker build -t myprivaterepo/library-management-api ./api/" 
+        sh "docker build -t myprivaterepo.azurecr.io/library-management-api ./api/" 
         echo "image built successfully"
       }     
     }
