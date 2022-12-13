@@ -7,7 +7,7 @@ pipeline{
         expression{
           CODE_CHANGES=true
         }
-        docker build -t image:image ./api/. 
+        docker build -t library-management-api ./api/. 
         echo "image built successfully"
       }
     }
