@@ -9,7 +9,7 @@ pipeline{
         }
       }
       steps{
-        docker build -t library-management-api ./api/. 
+        sh "docker build -t library-management-api ./api/." 
         echo "image built successfully"
       }     
     }
