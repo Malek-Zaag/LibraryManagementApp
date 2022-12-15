@@ -15,6 +15,7 @@ pipeline{
         echo "pushing to ACR stage"
         withCredentials([usernamePassword(credentialsId: 'azure-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]){
           sh "echo $PASS | docker login ${AZURE_REPO} --username $USER --password-stdin"
+          sh "docker --dns 8.8.8.8"
           sh "docker push myprivaterepo.azurecr.io/library-management-api"
         }
         echo "image pushed successfully to azure container registry"
