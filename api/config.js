@@ -10,7 +10,12 @@ const sequelize = new Sequelize(
     dialect: "mysql",
   }
 );
-console.log(process.env.DB, process.env.USER, process.env.PASS);
+console.log(
+  process.env.DB,
+  process.env.USER,
+  process.env.PASS,
+  process.env.HOST
+);
 sequelize
   .authenticate()
   .then(() => {
