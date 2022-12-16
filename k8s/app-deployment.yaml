@@ -5,15 +5,15 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: library-app
+      app: app
   replicas: 3
   template:
     metadata:
       labels:
-        app: library-app
+        app: app
     spec:
       containers:
-        - name: library-app
+        - name: app
           image: myprivaterepo.azurecr.io/library-management-api:latest
           imagePullPolicy: Always
           ports:

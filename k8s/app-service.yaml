@@ -4,7 +4,7 @@ metadata:
   name: library-app-svc
 spec:
   selector:
-    app: library-app
+    app: app
   ports:
     - protocol: TCP
       port: 5050
