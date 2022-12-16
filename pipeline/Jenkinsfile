@@ -23,8 +23,8 @@ pipeline{
     }
     stage("deploy image on kubernetes cluster"){
       steps{
-        az account set --subscription cc7b3e92-7412-47e3-abe0-b6f5315d0d09
-        az aks get-credentials --resource-group k8s-rg --name k8s-cluster
+        sh 'az account set --subscription cc7b3e92-7412-47e3-abe0-b6f5315d0d09'
+        sh 'az aks get-credentials --resource-group k8s-rg --name k8s-cluster'
         sh "kubectl apply -f ./k8s/mysql-service.yaml"
         sh "kubectl apply -f ./k8s/app-deployment.yaml"
         sh "kubectl apply -f ./k8s/app-service.yaml"
