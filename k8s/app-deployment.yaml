@@ -13,7 +13,7 @@ spec:
         app: library-app
     spec:
       containers:
-        - name: library-management-api
+        - name: library-app
           image: myprivaterepo.azurecr.io/library-management-api:latest
           imagePullPolicy: Always
           ports:
