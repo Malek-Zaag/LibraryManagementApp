@@ -2,15 +2,15 @@ const Sequelize = require("sequelize");
 
 require("dotenv").config();
 const sequelize = new Sequelize(
-  process.env.db,
-  process.env.user || "root",
-  process.env.password,
+  process.env.DB,
+  process.env.USER || "root",
+  process.env.PASS,
   {
-    host: process.env.host,
-    dialect: process.env.dialect,
+    host: process.env.HOST,
+    dialect: process.env.DIALECT,
   }
 );
-console.log(process.env.db, process.env.user, process.env.password);
+console.log(process.env.DB, process.env.USER, process.env.PASS);
 sequelize
   .authenticate()
   .then(() => {
