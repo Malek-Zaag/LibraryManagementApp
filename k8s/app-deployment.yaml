@@ -31,6 +31,6 @@ spec:
             - name: USER
               value: "malek"
             - name: PASS
-              value: "Admin12345!"
+              value: "Admin12345"
             - name: PORT
               value: "5050"
