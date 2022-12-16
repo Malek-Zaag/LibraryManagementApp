@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: library-management-api
-          image: myprivaterepo.azurerc.io/library-management-api
+          image: myprivaterepo.azurecr.io/library-management-api:latest
           imagePullPolicy: Always
           ports:
             - name: http
