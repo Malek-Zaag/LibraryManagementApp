@@ -21,16 +21,16 @@ spec:
               containerPort: 5050
           env:
             - name: API_KEY
-              value: "AIzaSyBV8-FTTR2lMCW5o38ncmEIQ-HCelWc6PI"
+              value: "change me"
             - name: HOST
               value: "mysql-svc"
             - name: DIALECT
               value: "mysql"
             - name: DB
-              value: "library_app"
+              value: "change me"
             - name: USER
-              value: "malek"
+              value: "change me"
             - name: PASS
-              value: "Admin12345"
+              value: "change me"
             - name: PORT
               value: "5050"
