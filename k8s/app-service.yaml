@@ -5,8 +5,8 @@ metadata:
 spec:
   selector:
     app: app
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 5050
       targetPort: 5050
-  type: LoadBalancer
