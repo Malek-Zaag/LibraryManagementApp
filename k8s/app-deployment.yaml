@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: library-app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: library-app
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: library-app
+    spec:
+      containers:
+        - name: library-management-api
+          image: myprivaterepo.azurerc.io/library-management-api
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 5050
+          env:
+            - name: API_KEY
+              value: "AIzaSyBV8-FTTR2lMCW5o38ncmEIQ-HCelWc6PI"
+            - name: HOST
+              value: "mysql-svc"
+            - name: DIALECT
+              value: "mysql"
+            - name: DB
+              value: "library_app"
+            - name: USER
+              value: "malek"
+            - name: PASS
+              value: "Admin12345!"
+            - name: PORT
+              value: "5050"
