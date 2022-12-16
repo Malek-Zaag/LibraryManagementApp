@@ -21,12 +21,5 @@ pipeline{
         echo "image pushed successfully to azure container registry"
       }
     }
-    stage("deploy image on kubernetes cluster"){
-      steps{
-        sh "kubectl apply -f ./k8s/mysql-service.yaml"
-        sh "kubectl apply -f ./k8s/app-deployment.yaml"
-        sh "kubectl apply -f ./k8s/app-service.yaml"
-      }
-    }
   }
 }
